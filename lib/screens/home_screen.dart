@@ -12,7 +12,7 @@ class HomeScreen extends StatelessWidget {
         title: Text(title),
       ),
       body: Center(
-        child: Text('Hello, World!'),
+        child: Text('Hello, World!'),        
       ),
     );
   }

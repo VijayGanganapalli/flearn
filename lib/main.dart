@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flearn/screens/animated/animated_container_app.dart';
+import 'package:flearn/screens/animated/animated_opacity_app.dart';
 
 void main() => runApp(FLearnApp());
 
@@ -11,7 +11,7 @@ class FLearnApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blueGrey
       ),
-      home: AnimatedContainerApp(appBarTitle: 'AnimatedContainer Demo'),
+      home: AnimatedOpacityApp(appBarTitle: 'Animated Opacity Demo'),
     );
   }
 }

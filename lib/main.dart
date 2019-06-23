@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flearn/screens/design/display_a_snackbar.dart';
+import 'package:flearn/screens/design/orientation_list.dart';
 
 void main() => runApp(FLearnApp());
 
@@ -9,7 +9,7 @@ class FLearnApp extends StatelessWidget {
     return MaterialApp(
       title: 'FLearn App',
       theme: ThemeData(primarySwatch: Colors.blueGrey),
-      home: DisplaySnackBar(appBarTitle: 'Snackbar Demo'),
+      home: OrientationList(appBarTitle: 'Orientation Demo'),
     );
   }
 }

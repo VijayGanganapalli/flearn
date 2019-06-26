@@ -4,6 +4,9 @@ import 'package:flearn/screens/forms/FormValidation.dart';
 void main() => runApp(FLearnApp());
 
 class FLearnApp extends StatelessWidget {
+  final String appBarTitle;
+
+  const FLearnApp({Key key, this.appBarTitle}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

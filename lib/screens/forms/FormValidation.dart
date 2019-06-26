@@ -6,7 +6,6 @@ class FormValidation extends StatefulWidget {
 }
 
 class _FormValidationState extends State<FormValidation> {
-
   final _formKey = GlobalKey<FormState>();
 
   @override
@@ -33,7 +32,8 @@ class _FormValidationState extends State<FormValidation> {
                 onPressed: () {
                   if (_formKey.currentState.validate()) {
                     Scaffold.of(context).showSnackBar(
-                        SnackBar(content: Text('Processing data')));
+                      SnackBar(content: Text('Processing data')),
+                    );
                   }
                 },
               ),

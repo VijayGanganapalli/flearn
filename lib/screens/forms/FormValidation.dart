@@ -7,12 +7,14 @@ class FormValidation extends StatefulWidget {
 
 class _FormValidationState extends State<FormValidation> {
   final _formKey = GlobalKey<FormState>();
+  final myController = TextEditingController();
   FocusNode myFocusNode;
 
   @override
   void initState() {
     super.initState();
     myFocusNode = FocusNode();
+    myController.addListener(_printLatestValue);
   }
 
   @override
@@ -21,11 +23,15 @@ class _FormValidationState extends State<FormValidation> {
     super.dispose();
   }
 
+  _printLatestValue() {
+    print('Second text field: ${myController.text}');
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('TextField Auto Focus'),
+        title: Text('Retrive Text Input'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
@@ -34,25 +40,17 @@ class _FormValidationState extends State<FormValidation> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              TextFormField(
+              TextField(
                 autofocus: true,
-                validator: (value) {
-                  if (value.isEmpty) {
-                    return 'Please enter username';
-                  }
-                  return null;
+                onChanged: (text) {
+                  print('First text field: $text');
                 },
               ),
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 8.0),
-                child: TextFormField(
+                child: TextField(
                   focusNode: myFocusNode,
-                  validator: (value) {
-                    if (value.isEmpty) {
-                      return 'Please enter password';
-                    }
-                    return null;
-                  },
+                  controller: myController,
                 ),
               ),
             ],
@@ -62,7 +60,7 @@ class _FormValidationState extends State<FormValidation> {
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.edit),
         tooltip: 'Focus second text field',
-        onPressed: (){
+        onPressed: () {
           FocusScope.of(context).requestFocus(myFocusNode);
         },
       ),

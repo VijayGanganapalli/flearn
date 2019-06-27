@@ -6,26 +6,12 @@ class FormValidation extends StatefulWidget {
 }
 
 class _FormValidationState extends State<FormValidation> {
-  final _formKey = GlobalKey<FormState>();
   final myController = TextEditingController();
-  FocusNode myFocusNode;
-
-  @override
-  void initState() {
-    super.initState();
-    myFocusNode = FocusNode();
-    myController.addListener(_printLatestValue);
-  }
 
   @override
   void dispose() {
-    myFocusNode.dispose();
     myController.dispose();
     super.dispose();
-  }
-
-  _printLatestValue() {
-    print('Second text field: ${myController.text}');
   }
 
   @override
@@ -37,32 +23,29 @@ class _FormValidationState extends State<FormValidation> {
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Form(
-          key: _formKey,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               TextField(
-                autofocus: true,
-                onChanged: (text) {
-                  print('First text field: $text');
-                },
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 8.0),
-                child: TextField(
-                  focusNode: myFocusNode,
-                  controller: myController,
-                ),
+                controller: myController,
               ),
             ],
           ),
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.edit),
-        tooltip: 'Focus second text field',
+        child: Icon(Icons.text_fields),
+        tooltip: 'Show me the value',
         onPressed: () {
-          FocusScope.of(context).requestFocus(myFocusNode);
+          return showDialog(
+            barrierDismissible: true,
+            context: context,
+            builder: (context){
+              return AlertDialog(
+                content: Text(myController.text),
+              );
+            }
+          );
         },
       ),
     );

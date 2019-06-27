@@ -13,12 +13,7 @@ class FLearnApp extends StatelessWidget {
     return MaterialApp(
       title: 'FLearn App',
       theme: ThemeData(primarySwatch: Colors.blueGrey),
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text('Form Validation'),
-        ),
-        body: FormValidation(),
-      ),
+      home: FormValidation(),
     );
   }
 }

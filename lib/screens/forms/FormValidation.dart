@@ -20,6 +20,7 @@ class _FormValidationState extends State<FormValidation> {
   @override
   void dispose() {
     myFocusNode.dispose();
+    myController.dispose();
     super.dispose();
   }
 

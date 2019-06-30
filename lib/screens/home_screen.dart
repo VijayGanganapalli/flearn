@@ -11,28 +11,40 @@ class HomeScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text(title),
       ),
-      body: Center(
-        child: MyButton(),
-      ),
+      body: DismissableDemo(),
     );
   }
 }
 
-class MyButton extends StatelessWidget {
+class DismissableDemo extends StatefulWidget {
+  @override
+  _DismissableDemoState createState() => _DismissableDemoState();
+}
+
+class _DismissableDemoState extends State<DismissableDemo> {
+  final items = List<String>.generate(12, (i) => "Item ${i + 1}");
+
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      child: Container(
-        padding: EdgeInsets.all(12.0),
-        decoration: BoxDecoration(
-          color: Theme.of(context).buttonColor,
-          borderRadius: BorderRadius.circular(8.0),
-        ),
-        child: Text('Flat Button'),
-      ),
-      onTap: () {
-        Scaffold.of(context)
-            .showSnackBar(SnackBar(content: Text('Button clicked')));
+    return ListView.builder(
+      itemCount: items.length,
+      itemBuilder: (context, index) {
+        final item = items[index];
+        return Dismissible(
+          key: Key(item),
+          onDismissed: (direction) {
+            setState(() {
+              items.removeAt(index);
+            });
+            Scaffold.of(context).showSnackBar(SnackBar(
+              content: Text("$item dismissed"),
+            ));
+          },
+          background: Container(color: Colors.red),
+          child: ListTile(
+            title: Text('$item'),
+          ),
+        );
       },
     );
   }

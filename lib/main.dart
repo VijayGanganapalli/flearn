@@ -13,7 +13,7 @@ class FLearnApp extends StatelessWidget {
     return MaterialApp(
       title: 'FLearn App',
       theme: ThemeData(primarySwatch: Colors.blueGrey),
-      home: HomeScreen(title: 'Fade in Images Demo'),
+      home: HomeScreen(title: 'Lists Demo'),
     );
   }
 }

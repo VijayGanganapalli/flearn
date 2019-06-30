@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flearn/screens/images/images_from_internet.dart';
+import 'package:flearn/screens/lists/lists_demo.dart';
 
 class HomeScreen extends StatelessWidget {
   final String title;
@@ -12,7 +12,7 @@ class HomeScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text(title),
       ),
-      body: ImagesFromInternet(),
+      body: ListsDemo(),
     );
   }
 }

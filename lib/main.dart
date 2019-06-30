@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flearn/screens/forms/FormValidation.dart';
+import 'package:flearn/screens/home_screen.dart';
 
 void main() => runApp(FLearnApp());
 
@@ -13,7 +13,7 @@ class FLearnApp extends StatelessWidget {
     return MaterialApp(
       title: 'FLearn App',
       theme: ThemeData(primarySwatch: Colors.blueGrey),
-      home: FormValidation(),
+      home: HomeScreen(title: 'Gestures Demo'),
     );
   }
 }

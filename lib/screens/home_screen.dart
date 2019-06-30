@@ -12,8 +12,24 @@ class HomeScreen extends StatelessWidget {
         title: Text(title),
       ),
       body: Center(
-        child: Text('Hello, World!'),        
+        child: MyButton(),
       ),
+    );
+  }
+}
+
+class MyButton extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      child: Container(
+        padding: EdgeInsets.all(12.0),
+        child: Text('Flat Button'),
+      ),
+      onTap: () {
+        Scaffold.of(context)
+            .showSnackBar(SnackBar(content: Text('Button clicked')));
+      },
     );
   }
 }
